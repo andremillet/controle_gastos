@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Gastos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Controle de Gastos Familiares</h1>
+    
+    <h2>Dashboard</h2>
+    <div id="dashboard"></div>
+    
+    <h2>Entradas</h2>
+    <table id="entradas">
+        <tr><th>Nome</th><th>Valor (R$)</th><th>Status</th></tr>
+    </table>
+    <h3>Adicionar Entrada</h3>
+    <form id="form-entrada">
+        <input type="text" id="entrada-nome" placeholder="Nome" required>
+        <input type="number" id="entrada-valor" placeholder="Valor" step="0.01" required>
+        <select id="entrada-status">
+            <option value="pendente">Pendente</option>
+            <option value="recebido">Recebido</option>
+        </select>
+        <button type="submit">Adicionar</button>
+    </form>
+    
+    <h2>Saídas</h2>
+    <table id="saidas">
+        <tr><th>Nome</th><th>Valor (R$)</th><th>Flags</th></tr>
+    </table>
+    <h3>Adicionar Saída</h3>
+    <form id="form-saida">
+        <input type="text" id="saida-nome" placeholder="Nome" required>
+        <input type="number" id="saida-valor" placeholder="Valor" step="0.01" required>
+        <input type="text" id="saida-flags" placeholder="Flags (ex: urg,feito)">
+        <button type="submit">Adicionar</button>
+    </form>
+    
+    <script src="script.js"></script>
+</body>
+</html>
