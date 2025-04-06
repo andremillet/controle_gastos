@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adicionado para responsividade -->
     <title>Controle de Gastos</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +14,12 @@
     
     <h2>Entradas</h2>
     <table id="entradas">
-        <tr><th>Nome</th><th>Valor (R$)</th><th>Status</th></tr>
+        <tr>
+            <th data-label="Nome">Nome</th>
+            <th data-label="Valor (R$)">Valor (R$)</th>
+            <th data-label="Status">Status</th>
+            <th data-label="Ações">Ações</th>
+        </tr>
     </table>
     <h3>Adicionar Entrada</h3>
     <form id="form-entrada">
@@ -28,7 +34,12 @@
     
     <h2>Saídas</h2>
     <table id="saidas">
-        <tr><th>Nome</th><th>Valor (R$)</th><th>Flags</th></tr>
+        <tr>
+            <th data-label="Nome">Nome</th>
+            <th data-label="Valor (R$)">Valor (R$)</th>
+            <th data-label="Flags">Flags</th>
+            <th data-label="Ações">Ações</th>
+        </tr>
     </table>
     <h3>Adicionar Saída</h3>
     <form id="form-saida">

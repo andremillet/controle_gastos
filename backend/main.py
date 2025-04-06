@@ -6,10 +6,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Configuração de CORS para permitir acesso do frontend
+# Configuração de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:8080", "http://0.0.0.0:8080", "*"],  # Adiciona origens específicas
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -53,6 +53,31 @@ def add_entrada(entrada: Entrada):
     conn.close()
     return {"id": entrada_id, **entrada.dict()}
 
+@app.put("/entradas/{id}", response_model=dict)
+def update_entrada(id: int, entrada: Entrada):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE entradas SET nome = ?, valor = ?, status = ? WHERE id = ?",
+                   (entrada.nome, entrada.valor, entrada.status, id))
+    if cursor.rowcount == 0:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Entrada não encontrada")
+    conn.commit()
+    conn.close()
+    return {"id": id, **entrada.dict()}
+
+@app.delete("/entradas/{id}")
+def delete_entrada(id: int):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM entradas WHERE id = ?", (id,))
+    if cursor.rowcount == 0:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Entrada não encontrada")
+    conn.commit()
+    conn.close()
+    return {"message": "Entrada deletada com sucesso"}
+
 # Endpoints de Saídas
 @app.get("/saidas", response_model=List[dict])
 def get_saidas():
@@ -74,13 +99,37 @@ def add_saida(saida: Saida):
     conn.close()
     return {"id": saida_id, **saida.dict()}
 
+@app.put("/saidas/{id}", response_model=dict)
+def update_saida(id: int, saida: Saida):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE saidas SET nome = ?, valor = ?, flags = ? WHERE id = ?",
+                   (saida.nome, saida.valor, saida.flags, id))
+    if cursor.rowcount == 0:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Saída não encontrada")
+    conn.commit()
+    conn.close()
+    return {"id": id, **saida.dict()}
+
+@app.delete("/saidas/{id}")
+def delete_saida(id: int):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM saidas WHERE id = ?", (id,))
+    if cursor.rowcount == 0:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Saída não encontrada")
+    conn.commit()
+    conn.close()
+    return {"message": "Saída deletada com sucesso"}
+
 # Dashboard
 @app.get("/dashboard")
 def get_dashboard():
     conn = get_db()
     cursor = conn.cursor()
     
-    # Totais
     cursor.execute("SELECT SUM(valor) FROM entradas WHERE status = 'recebido'")
     entradas_recebidas = cursor.fetchone()[0] or 0
     cursor.execute("SELECT SUM(valor) FROM entradas")
