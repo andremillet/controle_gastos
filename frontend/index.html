@@ -2,52 +2,107 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adicionado para responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Gastos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Controle de Gastos Familiares</h1>
     
+    <!-- Seletor de mês -->
+    <div class="month-selector">
+        <label for="month-select">Mês de referência:</label>
+        <select id="month-select">
+            <option value="current">Mês Atual</option>
+            <!-- Outros meses serão adicionados dinamicamente pelo JavaScript -->
+        </select>
+    </div>
+    
     <h2>Dashboard</h2>
     <div id="dashboard"></div>
     
     <h2>Entradas</h2>
+    <div class="table-actions">
+        <button id="show-all-entradas">Ver Todos os Meses</button>
+        <button id="show-month-entradas" class="active">Ver Mês Atual</button>
+        <button id="add-entrada-btn" class="add-btn">+ Adicionar Entrada</button>
+    </div>
     <table id="entradas">
         <tr>
             <th data-label="Nome">Nome</th>
             <th data-label="Valor (R$)">Valor (R$)</th>
             <th data-label="Status">Status</th>
+            <th data-label="Data">Data</th>
             <th data-label="Ações">Ações</th>
         </tr>
     </table>
-    <h3>Adicionar Entrada</h3>
-    <form id="form-entrada">
-        <input type="text" id="entrada-nome" placeholder="Nome" required>
-        <input type="number" id="entrada-valor" placeholder="Valor" step="0.01" required>
-        <select id="entrada-status">
-            <option value="pendente">Pendente</option>
-            <option value="recebido">Recebido</option>
-        </select>
-        <button type="submit">Adicionar</button>
-    </form>
+    <div id="form-entrada-container" class="form-container" style="display: none;">
+        <h3>Adicionar Entrada</h3>
+        <form id="form-entrada">
+            <input type="text" id="entrada-nome" placeholder="Nome" required>
+            <input type="number" id="entrada-valor" placeholder="Valor" step="0.01" required>
+            <select id="entrada-status">
+                <option value="pendente">Pendente</option>
+                <option value="recebido">Recebido</option>
+            </select>
+            <input type="date" id="entrada-data">
+            <div class="form-buttons">
+                <button type="submit">Adicionar</button>
+                <button type="button" id="cancel-entrada-btn">Cancelar</button>
+            </div>
+        </form>
+    </div>
     
     <h2>Saídas</h2>
+    <div class="table-actions">
+        <div class="filters">
+            <label>Filtrar por: </label>
+            <select id="filter-saidas">
+                <option value="all">Todas</option>
+                <option value="parcelas">Apenas Parceladas</option>
+                <option value="nao-parcelas">Não Parceladas</option>
+                <option value="proximas">Próximas 30 dias</option>
+            </select>
+        </div>
+        <button id="show-all-saidas">Ver Todos os Meses</button>
+        <button id="show-month-saidas" class="active">Ver Mês Atual</button>
+        <button id="add-saida-btn" class="add-btn">+ Adicionar Saída</button>
+    </div>
     <table id="saidas">
         <tr>
             <th data-label="Nome">Nome</th>
             <th data-label="Valor (R$)">Valor (R$)</th>
             <th data-label="Flags">Flags</th>
+            <th data-label="Vencimento">Vencimento</th>
+            <th data-label="Parcelas">Parcelas</th>
             <th data-label="Ações">Ações</th>
         </tr>
     </table>
-    <h3>Adicionar Saída</h3>
-    <form id="form-saida">
-        <input type="text" id="saida-nome" placeholder="Nome" required>
-        <input type="number" id="saida-valor" placeholder="Valor" step="0.01" required>
-        <input type="text" id="saida-flags" placeholder="Flags (ex: urg,feito)">
-        <button type="submit">Adicionar</button>
-    </form>
+    <div id="form-saida-container" class="form-container" style="display: none;">
+        <h3>Adicionar Saída</h3>
+        <form id="form-saida">
+            <input type="text" id="saida-nome" placeholder="Nome" required>
+            <input type="number" id="saida-valor" placeholder="Valor" step="0.01" required>
+            <input type="text" id="saida-flags" placeholder="Flags (ex: urg,feito)">
+            <input type="date" id="saida-data-vencimento">
+            <div class="parcelamento-container">
+                <label for="saida-parcelamento">Parcelamento:</label>
+                <select id="saida-parcelamento">
+                    <option value="1">À vista</option>
+                    <option value="2">2x</option>
+                    <option value="3">3x</option>
+                    <option value="5">5x</option>
+                    <option value="6">6x</option>
+                    <option value="10">10x</option>
+                    <option value="12">12x</option>
+                </select>
+            </div>
+            <div class="form-buttons">
+                <button type="submit">Adicionar</button>
+                <button type="button" id="cancel-saida-btn">Cancelar</button>
+            </div>
+        </form>
+    </div>
     
     <script src="script.js"></script>
 </body>
