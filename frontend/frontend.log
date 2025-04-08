@@ -1,0 +1,121 @@
+127.0.0.1 - - [08/Apr/2025 18:10:30] "GET / HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 34076)
+Traceback (most recent call last):
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 1317, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 679, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 878, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+    ~~~~~~~~~~^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+127.0.0.1 - - [08/Apr/2025 18:10:30] "GET /style.css HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 34082)
+Traceback (most recent call last):
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 1317, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 679, in do_GET
+    self.copyfile(f, self.wfile)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 878, in copyfile
+    shutil.copyfileobj(source, outputfile)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/shutil.py", line 204, in copyfileobj
+    fdst_write(buf)
+    ~~~~~~~~~~^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+127.0.0.1 - - [08/Apr/2025 18:10:30] code 404, message File not found
+127.0.0.1 - - [08/Apr/2025 18:10:30] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 34088)
+Traceback (most recent call last):
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 731, in send_head
+    f = open(path, 'rb')
+FileNotFoundError: [Errno 2] No such file or directory: '/home/woulschneider/petri-dish/controle_gastos/frontend/favicon.ico'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 1317, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                             directory=args.directory)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 672, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 676, in do_GET
+    f = self.send_head()
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 733, in send_head
+    self.send_error(HTTPStatus.NOT_FOUND, "File not found")
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/http/server.py", line 491, in send_error
+    self.wfile.write(body)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/woulschneider/.local/share/uv/python/cpython-3.13.2-linux-x86_64-gnu/lib/python3.13/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
